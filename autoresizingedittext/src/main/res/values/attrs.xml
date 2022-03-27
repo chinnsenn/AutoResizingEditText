@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="AutoResizingEditText">
+    <attr name="resizing_min_size" format="dimension|reference" />
+    <attr name="resizing_max_size" format="dimension|reference" />
+    <attr name="resizing_threshold" format="integer|reference" />
+    <attr name="resizing_step" format="dimension|reference" />
+  </declare-styleable>
+</resources>
