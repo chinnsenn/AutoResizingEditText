@@ -1,4 +1,4 @@
-package com.chinnsenn.autoresizingedittext
+package com.chinnsenn.widget
 
 import android.content.Context
 import android.util.AttributeSet
