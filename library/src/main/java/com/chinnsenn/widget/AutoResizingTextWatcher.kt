@@ -59,16 +59,18 @@ class AutoResizingTextWatcher(context: Context) : TextWatcher {
 	}
 
 	override fun afterTextChanged(s: Editable?) {
+		resizingText(s)
+	}
+
+	fun resizingText(s: Editable?) {
 		s?.also { text ->
-			weakReference.get()?.also {
-				val length = text.length
-				if (length <= resizingThreshold) {
-					mCallBack?.onResizing(maxTextSize)
-				} else {
-					val gap = (length - resizingThreshold) * stepByStep
-					val currentSize = (maxTextSize - gap).coerceAtLeast(minTextSize)
-					mCallBack?.onResizing(currentSize)
-				}
+			val length = text.length
+			if (length <= resizingThreshold) {
+				mCallBack?.onResizing(maxTextSize)
+			} else {
+				val gap = (length - resizingThreshold) * stepByStep
+				val currentSize = (maxTextSize - gap).coerceAtLeast(minTextSize)
+				mCallBack?.onResizing(currentSize)
 			}
 		}
 	}

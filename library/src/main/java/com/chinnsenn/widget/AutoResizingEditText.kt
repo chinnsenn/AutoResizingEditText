@@ -48,8 +48,27 @@ class AutoResizingEditText @JvmOverloads constructor(
 				watcher.setMaxTextSize(maxTextSize)
 				watcher.setStep(stepByStep)
 				watcher.setResizingThreshold(resizingThreshold)
-				watcher.afterTextChanged(text)
+				watcher.resizingText(text)
 			}
+		}
+	}
+
+	@JvmOverloads
+	fun setResizingConfig(maxSize: Float, minSize: Float, threshold: Int? = null, step: Float? = null) {
+		this.maxTextSize = maxSize
+		this.minTextSize = minSize
+		mTextWatcher?.also { watcher ->
+			watcher.setMaxTextSize(maxTextSize)
+			watcher.setMinTextSize(minTextSize)
+			threshold?.let {
+				resizingThreshold = it
+				watcher.setResizingThreshold(it)
+			}
+			step?.let {
+				stepByStep = it
+				watcher.setStep(it)
+			}
+			watcher.resizingText(text)
 		}
 	}
 
