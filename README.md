@@ -6,7 +6,7 @@
 
 1、在 gradle 里引用:
 
-`implementation 'com.chinnsenn:submitbutton:#last_version'` ([这里查看最新版本号][2])
+`implementation 'com.chinnsenn:submitbutton:0.3.1'`
 
 2、在 xml 中添加控件
 
