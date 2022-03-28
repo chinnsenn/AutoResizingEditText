@@ -1,10 +1,10 @@
 # 自动调整字体大小的 EditText
 
+![](https://raw.githubusercontent.com/chinnsenn/BlogFigureBed/master/blogimg/untitled.gif)
+
 ## 使用方法
 
 1、在 gradle 里引用:
-
-<!--more-->
 
 `implementation 'com.chinnsenn:submitbutton:#last_version'` ([这里查看最新版本号][2])
 
