@@ -3,6 +3,9 @@ package com.chinnsenn.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.EditText
+import android.widget.Toast
+import androidx.annotation.FloatRange
+import androidx.annotation.IntRange
 import androidx.appcompat.widget.AppCompatEditText
 import java.lang.ref.WeakReference
 
@@ -31,11 +34,14 @@ class AutoResizingEditText @JvmOverloads constructor(
 	init {
 		attrs?.also {
 			val ta = context.obtainStyledAttributes(it, R.styleable.AutoResizingEditText)
-			minTextSize = ta.getDimension(R.styleable.AutoResizingEditText_resizing_min_size, 11.spF(context))
-			maxTextSize = ta.getDimension(R.styleable.AutoResizingEditText_resizing_max_size, 20.spF(context))
+			minTextSize = ta.getDimension(R.styleable.AutoResizingEditText_resizing_min_size, 11f)
+			maxTextSize = ta.getDimension(R.styleable.AutoResizingEditText_resizing_max_size, 20f)
 			resizingThreshold = ta.getInt(R.styleable.AutoResizingEditText_resizing_threshold, 10)
 			stepByStep = ta.getDimension(R.styleable.AutoResizingEditText_resizing_step, 1f)
 			ta.recycle()
+			if (minTextSize > maxTextSize) {
+				throw IllegalArgumentException("minSize 不能大于 maxSize")
+			}
 			if (mTextWatcher == null) {
 				mTextWatcher = AutoResizingTextWatcher(context)
 			}
@@ -54,7 +60,16 @@ class AutoResizingEditText @JvmOverloads constructor(
 	}
 
 	@JvmOverloads
-	fun setResizingConfig(maxSize: Float, minSize: Float, threshold: Int? = null, step: Float? = null) {
+	fun setResizingConfig(
+		@FloatRange(from = 0.0, fromInclusive = false, toInclusive = false) maxSize: Float,
+		@FloatRange(from = 0.0, fromInclusive = false, toInclusive = false) minSize: Float,
+		@IntRange(from = 1, to = Long.MAX_VALUE) threshold: Int? = null,
+		@FloatRange(from = 0.0, to = 1000.0, fromInclusive = false, toInclusive = false) step: Float? = null
+	) {
+		if (minSize > maxSize) {
+			Toast.makeText(context, "minSize 不能大于 maxSize", Toast.LENGTH_SHORT).show()
+			return
+		}
 		this.maxTextSize = maxSize
 		this.minTextSize = minSize
 		mTextWatcher?.also { watcher ->

@@ -6,26 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_max_size"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="最大字体"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      app:layout_constraintBaseline_toBaselineOf="@id/edt_max_size"
+      app:layout_constraintEnd_toStartOf="@id/edt_max_size"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/edt_max_size"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="100dp"
+      android:gravity="center"
+      android:text="20"
+      android:textSize="16sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/tv_max_size"
+      app:layout_constraintTop_toBottomOf="@id/gl" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_min_size"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="最小字体"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      app:layout_constraintBaseline_toBaselineOf="@id/edt_min_size"
+      app:layout_constraintEnd_toStartOf="@id/edt_min_size"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/edt_min_size"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="11"
+      android:textSize="16sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/tv_min_size"
+      app:layout_constraintTop_toBottomOf="@id/edt_max_size" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_threshold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="调整阈值"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      app:layout_constraintBaseline_toBaselineOf="@id/edt_threshold"
+      app:layout_constraintEnd_toStartOf="@id/edt_threshold"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/edt_threshold"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="11"
+      android:textSize="16sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/tv_threshold"
+      app:layout_constraintTop_toBottomOf="@id/edt_min_size" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_step"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="调整步进"
+      android:textColor="@color/black"
+      android:textSize="16sp"
+      app:layout_constraintBaseline_toBaselineOf="@id/edt_step"
+      app:layout_constraintEnd_toStartOf="@id/edt_step"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <androidx.appcompat.widget.AppCompatEditText
+      android:id="@+id/edt_step"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="1"
+      android:textSize="16sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/tv_step"
+      app:layout_constraintTop_toBottomOf="@id/edt_threshold" />
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/btn_submit"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="确定"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/edt_step" />
+
   <androidx.constraintlayout.widget.Guideline
       android:id="@+id/gl"
       android:layout_width="wrap_content"
-      android:orientation="horizontal"
       android:layout_height="wrap_content"
-      app:layout_constraintGuide_percent="0.5" />
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.2" />
 
-  <com.chinnsenn.widget.AutoResizingEditText
-      android:id="@+id/edt_auto_resizing"
+  <FrameLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="12839081230"
-      android:textColor="@color/black"
-      android:textSize="20sp"
       app:layout_constraintBottom_toTopOf="@id/gl"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:resizing_max_size="16sp"
-      app:resizing_min_size="5sp"
-      app:resizing_step="1.5sp"
-      app:resizing_threshold="3" />
+      app:layout_constraintStart_toStartOf="parent">
+
+    <com.chinnsenn.widget.AutoResizingEditText
+        android:id="@+id/edt_auto_resizing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12839081230"
+        android:textColor="@color/black" />
+  </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
