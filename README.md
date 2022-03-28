@@ -39,7 +39,7 @@
 
 ```kotlin
 val autoResizingEditText:AutoResizingEditText = findViewById(R.id.submitbutton)
-autoResizingEditText(13.spF(this), 2.spF(this))
+autoResizingEditText(13, 2)
 ```
 
 ## 更新计划
