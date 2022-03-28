@@ -25,9 +25,9 @@ class AutoResizingTextWatcher(context: Context) : TextWatcher {
 
 	init {
 		weakReference.get()?.also {
-			minTextSize = 12.spF(it)
-			maxTextSize = 20.spF(it)
-			stepByStep = 1.spF(it)
+			minTextSize = 12f
+			maxTextSize = 20f
+			stepByStep = 1f
 		}
 	}
 

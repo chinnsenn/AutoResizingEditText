@@ -23,19 +23,3 @@ fun Int.dpF(context: Context): Float {
 		context.resources.displayMetrics
 	)
 }
-
-fun Int.sp(context: Context): Int {
-	return TypedValue.applyDimension(
-		TypedValue.COMPLEX_UNIT_SP,
-		this.toFloat(),
-		context.resources.displayMetrics
-	).toInt()
-}
-
-fun Int.spF(context: Context): Float {
-	return TypedValue.applyDimension(
-		TypedValue.COMPLEX_UNIT_SP,
-		this.toFloat(),
-		context.resources.displayMetrics
-	)
-}
